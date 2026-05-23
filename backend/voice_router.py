@@ -126,3 +126,12 @@ async def speak_text(req: SpeakRequest):
     except Exception as e:
         print(f"[Voice] TTS error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+# ─── ORCHESTRATOR ─────────────────────────────────────────
+# in this all the agents are called in order
+# 1. Language detection
+# 2. Legal domain classification
+# 3. Legal knowledge base search
+# 4. Rights explanation
+# 5. Document drafting
+# 6. Return the results
