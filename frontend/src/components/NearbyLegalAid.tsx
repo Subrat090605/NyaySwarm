@@ -329,3 +329,6 @@ export default function NearbyLegalAid({ userState }: Props) {
     </div>
   );
 }
+
+// NearbyLegalAid.tsx — Place in src/components/NearbyLegalAid.tsx
+// Shows nearby legal aid centers
