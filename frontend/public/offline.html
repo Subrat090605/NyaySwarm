@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NyaySwarm — Offline</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600&display=swap');
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      background: #0A0A08; color: #F5F4EF;
+      min-height: 100vh; display: flex;
+      flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 24px;
+    }
+    .logo {
+      width: 64px; height: 64px; border-radius: 18px;
+      background: linear-gradient(135deg, #FF6B1A, #E63900);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px; margin: 0 auto 24px;
+      box-shadow: 0 0 32px rgba(255,107,26,0.3);
+    }
+    h1 { font-size: 28px; font-weight: 600; margin-bottom: 12px; letter-spacing: -0.02em; }
+    p { font-size: 15px; color: rgba(245,244,239,0.5); line-height: 1.7; max-width: 360px; margin-bottom: 32px; }
+    .tip {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px; padding: 20px 24px; max-width: 380px; margin-bottom: 28px;
+    }
+    .tip-title { font-size: 12px; color: #FF6B1A; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+    .tip-body { font-size: 13px; color: rgba(245,244,239,0.5); line-height: 1.65; }
+    .retry-btn {
+      padding: 13px 28px; border-radius: 12px;
+      background: linear-gradient(135deg, #FF6B1A, #E63900);
+      color: white; border: none; cursor: pointer;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 15px; font-weight: 600;
+      box-shadow: 0 4px 20px rgba(255,107,26,0.3);
+    }
+    .nalsa { margin-top: 32px; font-size: 13px; color: rgba(245,244,239,0.3); }
+    .nalsa strong { color: #22C55E; }
+  </style>
+</head>
+<body>
+  <div class="logo">⚖</div>
+  <h1>You're offline</h1>
+  <p>NyaySwarm needs internet to search Indian law and generate your legal documents. Please check your connection.</p>
+
+  <div class="tip">
+    <div class="tip-title">While you wait</div>
+    <div class="tip-body">
+      For urgent legal help call <strong style="color:#22C55E">NALSA: 15100</strong> — free, available in all Indian languages, no internet needed.
+    </div>
+  </div>
+
+  <button class="retry-btn" onclick="window.location.reload()">
+    Try again →
+  </button>
+
+  <div class="nalsa">
+    National Legal Services Authority · Free for all citizens
+  </div>
+
+  <script>
+    // Auto-retry when back online
+    window.addEventListener('online', () => window.location.reload());
+  </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+   <link rel="manifest" href="/manifest.json" />
+<meta name="theme-color" content="#FF6B1A" />
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(r => console.log('[NyaySwarm SW] registered:', r.scope))
+        .catch(e => console.error('[NyaySwarm SW] failed:', e));
+    });
+  }
+</script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
