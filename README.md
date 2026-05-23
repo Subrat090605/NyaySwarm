@@ -172,8 +172,10 @@ We welcome contributions to NyaySwarm! Please follow these steps:
 
 Built with ❤️ by Team NyaySwarm for IGNITE ROOM HACKARENA 2.0
 
-- **[Subrat Panda](https://github.com/Subrat090605)** - Team Lead & Full Stack Developer
-- *[Add team member names and roles]*
+- **[Subrata Kumar Das](https://github.com/Subrat090605)** - Team Lead & Full Stack Developer
+- *Ayushi Singh *
+- *Harsh Singh*
+- *Nihar Ranjan Pradhan*
 
 ## 📜 License
 
