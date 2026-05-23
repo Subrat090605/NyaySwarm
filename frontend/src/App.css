@@ -1,120 +1,151 @@
+/* ── COUNTER BUTTON ──────────────────────────────────────
+   Used for the increment/decrement counter in the hero section */
 .counter {
   font-size: 16px;
   padding: 5px 10px;
   border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
+  color: var(--accent);           /* text color from CSS variable */
+  background: var(--accent-bg);   /* soft background matching accent */
+  border: 2px solid transparent;  /* invisible border by default, shown on hover */
+  transition: border-color 0.3s;  /* smooth border reveal animation */
   margin-bottom: 24px;
 
+  /* Show border when hovered */
   &:hover {
     border-color: var(--accent-border);
   }
+
+  /* Keyboard focus ring for accessibility */
   &:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
 }
 
+/* ── HERO SECTION ────────────────────────────────────────
+   Contains the stacked logo animation (base + framework + vite logos) */
 .hero {
-  position: relative;
+  position: relative; /* needed so absolute children are positioned relative to this */
 
+  /* Shared styles: all three logo layers are horizontally centered */
   .base,
   .framework,
   .vite {
-    inset-inline: 0;
-    margin: 0 auto;
+    inset-inline: 0;  /* shorthand for left: 0 + right: 0 */
+    margin: 0 auto;   /* centers the element horizontally */
   }
 
+  /* Base logo — bottom layer, sits behind the others */
   .base {
     width: 170px;
     position: relative;
-    z-index: 0;
+    z-index: 0; /* lowest layer in stacking order */
   }
 
+  /* Framework and Vite logos are lifted out of normal flow */
   .framework,
   .vite {
-    position: absolute;
+    position: absolute; /* positioned relative to .hero */
   }
 
+  /* Framework logo — middle layer, rotated for 3D perspective effect */
   .framework {
-    z-index: 1;
+    z-index: 1;        /* sits above .base */
     top: 34px;
     height: 28px;
+    /* 3D perspective transform: rotates on all axes and scales up */
     transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
       scale(1.4);
   }
 
+  /* Vite logo — back layer, smaller and lower than framework */
   .vite {
-    z-index: 0;
+    z-index: 0;        /* same level as base, behind framework */
     top: 107px;
     height: 26px;
     width: auto;
+    /* Similar 3D transform but scaled down to appear further away */
     transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
       scale(0.8);
   }
 }
 
+/* ── CENTER LAYOUT ───────────────────────────────────────
+   Main centered column that holds the hero and counter */
 #center {
   display: flex;
   flex-direction: column;
   gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
+  place-content: center; /* vertically centers content */
+  place-items: center;   /* horizontally centers items */
+  flex-grow: 1;          /* expands to fill available vertical space */
 
+  /* Tighter padding and spacing on smaller screens */
   @media (max-width: 1024px) {
     padding: 32px 20px 24px;
     gap: 18px;
   }
 }
 
+/* ── NEXT STEPS SECTION ──────────────────────────────────
+   Two-column panel below the hero: Docs on left, Community on right */
 #next-steps {
   display: flex;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border); /* separator line above the section */
   text-align: left;
 
+  /* Each column (Docs / Community) gets equal width */
   & > div {
-    flex: 1 1 0;
+    flex: 1 1 0;   /* grow and shrink equally, start from 0 basis */
     padding: 32px;
+
     @media (max-width: 1024px) {
       padding: 24px 20px;
     }
   }
 
+  /* Small icon displayed above each column's heading */
   .icon {
     margin-bottom: 16px;
     width: 22px;
     height: 22px;
   }
 
+  /* Stack columns vertically and center text on mobile */
   @media (max-width: 1024px) {
     flex-direction: column;
     text-align: center;
   }
 }
 
+/* ── DOCS COLUMN ─────────────────────────────────────────
+   Left column — separated from Community column by a right border */
 #docs {
   border-right: 1px solid var(--border);
 
+  /* Remove right border on mobile since columns are stacked,
+     use bottom border instead to separate from community section */
   @media (max-width: 1024px) {
     border-right: none;
     border-bottom: 1px solid var(--border);
   }
 }
 
+/* ── SOCIAL / ECOSYSTEM LINKS ────────────────────────────
+   Row of icon + label buttons inside the Next Steps section */
 #next-steps ul {
   list-style: none;
   padding: 0;
   display: flex;
   gap: 8px;
-  margin: 32px 0 0;
+  margin: 32px 0 0; /* space above the link row */
 
+  /* Small logo inside each link button */
   .logo {
     height: 18px;
   }
 
+  /* Individual link button styling */
   a {
     color: var(--text-h);
     font-size: 16px;
@@ -125,26 +156,31 @@
     align-items: center;
     gap: 8px;
     text-decoration: none;
-    transition: box-shadow 0.3s;
+    transition: box-shadow 0.3s; /* smooth shadow on hover */
 
     &:hover {
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow); /* elevates button on hover */
     }
+
+    /* Icon image inside the button */
     .button-icon {
       height: 18px;
       width: 18px;
     }
   }
 
+  /* Mobile: wrap links into a 2-column grid */
   @media (max-width: 1024px) {
     margin-top: 20px;
     flex-wrap: wrap;
     justify-content: center;
 
+    /* Each item takes ~half the row width */
     li {
       flex: 1 1 calc(50% - 8px);
     }
 
+    /* Full-width buttons, centered content */
     a {
       width: 100%;
       justify-content: center;
@@ -153,30 +189,41 @@
   }
 }
 
+/* ── SPACER ──────────────────────────────────────────────
+   Empty decorative space at the bottom with a top border line */
 #spacer {
   height: 88px;
   border-top: 1px solid var(--border);
+
+  /* Shorter on mobile */
   @media (max-width: 1024px) {
     height: 48px;
   }
 }
 
+/* ── TICK MARKS ──────────────────────────────────────────
+   Decorative corner ticks on the left and right ends of a horizontal rule.
+   Uses CSS pseudo-elements to draw small arrow/tick shapes */
 .ticks {
   position: relative;
   width: 100%;
 
+  /* Both ticks are absolutely positioned at the top edge */
   &::before,
   &::after {
     content: '';
     position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
+    top: -4.5px;         /* nudge up so tick sits on the border line */
+    border: 5px solid transparent; /* transparent base — color added per side below */
   }
 
+  /* Left tick — colored on the left border only, making a right-pointing arrow */
   &::before {
     left: 0;
     border-left-color: var(--border);
   }
+
+  /* Right tick — colored on the right border only, making a left-pointing arrow */
   &::after {
     right: 0;
     border-right-color: var(--border);
