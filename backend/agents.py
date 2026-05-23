@@ -201,3 +201,12 @@ def run_swarm(question: str, language: str = "auto") -> dict:
         print(f"\n❌ SWARM ERROR at step above:")
         traceback.print_exc()
         raise e
+        
+# ─── ORCHESTRATOR ─────────────────────────────────────────
+# in this all the agents are called in order
+# 1. Language detection
+# 2. Legal domain classification
+# 3. Legal knowledge base search
+# 4. Rights explanation
+# 5. Document drafting
+# 6. Return the results
