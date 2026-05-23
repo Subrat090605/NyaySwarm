@@ -285,3 +285,6 @@ function ChecklistItem({ num, text }: { num: number; text: string }) {
     </div>
   );
 }
+
+// TeleLawPanel.tsx — Place in src/components/TeleLawPanel.tsx
+// Shows Tele-Law options and step-by-step guide
